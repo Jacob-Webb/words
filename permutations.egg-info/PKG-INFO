@@ -1,0 +1,11 @@
+Metadata-Version: 1.2
+Name: permutations
+Version: 0.1
+Summary: Create all possible words from a set of letters
+Home-page: https://github.com/sanctifyd/permutations
+Author: sanctifyd
+Author-email: sanctifyd83@yahoo.com
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
+Requires-Python: >=3
