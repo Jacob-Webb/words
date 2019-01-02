@@ -7,15 +7,7 @@ Design: Recursively parse out a word into all permutations of strings.
 	Break into minumum word length and check against a dictionary to return
 	only actual words.
 """
-"""
-Removed the tkinter gui
-from tkinter import *
 
-root = Tk()
-root.title("All Words")
-
-lb = Listbox()
-"""
 # Load dictionary into the program and store in dict_file
 def loadDictionary(file_name):
 	dict_file = open(file_name, "r").read().splitlines()

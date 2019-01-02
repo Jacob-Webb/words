@@ -15,30 +15,34 @@
 
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
+  <link href="bootstrap/dist/toolkit.min.css" rel="stylesheet">
 </head>
 
 <body>
   <!--[if lte IE 9]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
-
+  <div id="content">
+    <h1 class="display-3">Word Scrambler</h1>
+    <p class="h6">Just enter a word and you'll get all of the possible words that the letters will make!</p>
+    <br/>
+    <form action="permutations.py" method="POST">
+        <label for="my_word">What 'word' would you like scrambled?</label>
+        <input type="text" id="my_word" name="my_word">
+      </form>
+    
+      <p>
+        Your list of words will appear here.
+      </p>
+  </div>
   <!-- Add your site or application content here -->
-  <form action="permutations.py" method="POST">
-    <label for="my_word">What 'word' would you like scrambled?</label>
-    <input type="text" id="my_word" name="my_word" placeholder="Your word here">
-
-  </form>
-
-  <p>
-    Your list of words will appear here.
-  </p>
-
  
   <script src="js/vendor/modernizr-3.6.0.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
   <script src="js/plugins.js"></script>
   <script src="js/main.js"></script>
+  <script src="bootstrap/dist/toolkit.min.js"></script>
 
   <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
   <script>
