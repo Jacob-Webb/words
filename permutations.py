@@ -7,6 +7,13 @@ Design: Recursively parse out a word into all permutations of strings.
 	Break into minumum word length and check against a dictionary to return
 	only actual words.
 """
+from flask import Flask 
+from flask import request 
+from flask import render_template
+from flask import session 
+from flask import url_for
+import json
+app = Flask(__name__)
 
 # Load dictionary into the program and store in dict_file
 def loadDictionary(file_name):
@@ -35,30 +42,26 @@ def getPermutations(my_word):
 
 dict_set = set(loadDictionary("en-US.dic"))
 
+@app.route("/")
+def index():
+	return render_template("index.html")
 
-quit = "n"
 
-while (quit != "y"):
-	word = input("What word would you like to parse? ")
-
-	#lb.delete(0, END)
-	permutations_list = getPermutations(word)	
+@app.route('/permutations', methods=['POST'])
+def index_post():
+	my_word = request.form['my_word']
+	permutations_list = getPermutations(my_word)	
 	word_list = []
-	word_limit = int(input("What is the minimum word size? "))
+	word_limit = int(request.form['word-length'])
 
 	for element in permutations_list:
-		# if the word in the list is at least as long as the size limit and if it's found in the dictionary, append it to the final word list
 		if((len(element) >= word_limit) and (element in dict_set)):
 			word_list.append(element)
 
-	for word in word_list:
-		print(word)
+	return json.dumps(word_list)
 
-	#for item in word_list:
-		#lb.insert(END, item)
+if __name__ == '__main__':
+	app.run()
 
-	#lb.pack()
 
-	quit = input("Would you like to quit? (y or n): \n")
-
-#root.mainloop()
+"""Still need to get json.dump to update the <p> on index.html instead of showing new page"""

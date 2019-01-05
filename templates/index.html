@@ -16,7 +16,15 @@
   <!--<link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
   <link href="../bootstrap/dist/toolkit.min.css" rel="stylesheet"> -->
-  <link rel="stylesheet" href="{{ url_for('static' filename='bootstrap/dist/toolkit.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/dist/toolkit.min.css') }}">
+
+  <script src="js/vendor/modernizr-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="{{ url_for('static', filename='js/vendor/jquery-3.3.1.min.js') }}"><\x3c/script>')</script>
+  <script src="js/plugins.js"></script>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script src="{{ url_for('static', filename='bootstrap/dist/toolkit.min.js') }}"></script>
+
 </head>
 
 <body>
@@ -27,9 +35,11 @@
     <h1 class="display-3">Word Scrambler</h1>
     <p class="h6">Just enter a word and you'll get all of the possible words that the letters will make!</p>
     <br/>
-    <form action="../permutations.py" method="POST">
+    <form action="/permutations" method="POST">
         <label for="my_word">What 'word' would you like scrambled?</label>
         <input type="text" id="my_word" name="my_word">
+        <label for="word-length">Minimum word length</label>
+        <input type="number" id="word-length" name="word-length">
         <br/>
 
         <button class="btn btn-primary" type="submit">Submit</button>
@@ -41,13 +51,7 @@
   </div>
   <!-- Add your site or application content here -->
  
-  <script src="js/vendor/modernizr-3.6.0.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
-  <script src="js/plugins.js"></script>
-  <script src="js/main.js"></script>
-  <script src="../bootstrap/dist/toolkit.min.js"></script>
-
+ 
   <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
   <script>
     window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
