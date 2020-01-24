@@ -42,22 +42,30 @@
         <input type="number" id="word-length" name="word-length">
         <br/>
 
-        <button class="btn btn-primary" type="submit">Submit</button>
+        <button class="btn btn-primary" type="submit" id="submit-word">Submit</button>
       </form>
     
-      <p>
+      <p class="update-text">
         Your list of words will appear here.
       </p>
   </div>
-  <!-- Add your site or application content here -->
  
- 
-  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-  <script>
-    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-    ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview')
-  </script>
-  <script src="https://www.google-analytics.com/analytics.js" async defer></script>
-</body>
+  <script> 
+    $(document).ready(function(){
+       $('#content').on('click', '#submit-word', function(){
+          var my_word = $('#my_word').val();
+          var max_size = $('#word_length');
+          $.ajax({
+           url: "/permutations",
+          type: "POST",
+          data: {my_word: my_word, max_size: maxsize},
+          success: function(response) {
+            $(".update-text").html(response);
+           }
+        });
+       });
+    });
+    </script>
+ </body>
 
 </html>

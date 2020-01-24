@@ -7,6 +7,7 @@ Design: Recursively parse out a word into all permutations of strings.
 	Break into minumum word length and check against a dictionary to return
 	only actual words.
 """
+
 from flask import Flask 
 from flask import request 
 from flask import render_template
@@ -58,10 +59,10 @@ def index_post():
 		if((len(element) >= word_limit) and (element in dict_set)):
 			word_list.append(element)
 
-	return json.dumps(word_list)
+	word_set = list(set(word_list))
+	
+
+	return json.dumps(word_set)
 
 if __name__ == '__main__':
 	app.run()
-
-
-"""Still need to get json.dump to update the <p> on index.html instead of showing new page"""
