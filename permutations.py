@@ -53,16 +53,17 @@ def index_post():
 	my_word = request.form['my_word']
 	permutations_list = getPermutations(my_word)	
 	word_list = []
-	word_limit = int(request.form['word-length'])
+	word_limit = int(request.form['word_length'])
 
 	for element in permutations_list:
 		if((len(element) >= word_limit) and (element in dict_set)):
 			word_list.append(element)
 
+	#get word_list as a set to eliminate duplicates then set as a list again for data container
 	word_set = list(set(word_list))
-	
 
-	return json.dumps(word_set)
+	# return list to ajax call, remove brackets from python list first
+	return json.dumps(word_set).strip('[]')
 
 if __name__ == '__main__':
 	app.run()

@@ -18,11 +18,11 @@
   <link href="../bootstrap/dist/toolkit.min.css" rel="stylesheet"> -->
   <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/dist/toolkit.min.css') }}">
 
-  <script src="js/vendor/modernizr-3.6.0.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  <script>window.jQuery || document.write('<script src="{{ url_for('static', filename='js/vendor/jquery-3.3.1.min.js') }}"><\x3c/script>')</script>
-  <script src="js/plugins.js"></script>
-  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/vendor/modernizr-3.6.0.min.js') }}"></script>
+  <!--<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>-->
+  <script src="{{ url_for('static', filename='js/vendor/jquery-3.3.1.min.js') }}"></script>
+  <!--<script src="js/plugins.js"></script>-->
+  <!--<script src="{{ url_for('static', filename='js/main.js') }}"></script>-->
   <script src="{{ url_for('static', filename='bootstrap/dist/toolkit.min.js') }}"></script>
 
 </head>
@@ -35,15 +35,15 @@
     <h1 class="display-3">Word Scrambler</h1>
     <p class="h6">Just enter a word and you'll get all of the possible words that the letters will make!</p>
     <br/>
-    <form action="/permutations" method="POST">
+    <div class='input'>
         <label for="my_word">What 'word' would you like scrambled?</label>
         <input type="text" id="my_word" name="my_word">
         <label for="word-length">Minimum word length</label>
-        <input type="number" id="word-length" name="word-length">
+        <input type="number" id="word_length" name="word_length">
         <br/>
 
         <button class="btn btn-primary" type="submit" id="submit-word">Submit</button>
-      </form>
+    </div>
     
       <p class="update-text">
         Your list of words will appear here.
@@ -52,13 +52,13 @@
  
   <script> 
     $(document).ready(function(){
-       $('#content').on('click', '#submit-word', function(){
+       $('.input').on('click', '#submit-word', function(){
           var my_word = $('#my_word').val();
-          var max_size = $('#word_length');
+          var word_length = $('#word_length').val();
           $.ajax({
            url: "/permutations",
           type: "POST",
-          data: {my_word: my_word, max_size: maxsize},
+          data: {my_word: my_word, word_length: word_length},
           success: function(response) {
             $(".update-text").html(response);
            }

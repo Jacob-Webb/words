@@ -1,4 +1,4 @@
-/*$(function() {
+$(function() {
     $('button').click(function() {
         $.ajax({
             url: '/permutations',
@@ -13,10 +13,11 @@
         });
     });
 });
-*/
 
+/*
 $(function() {
     $('button').click(function() {
         $("p").html("This has changed");
     });
 });
+*/
